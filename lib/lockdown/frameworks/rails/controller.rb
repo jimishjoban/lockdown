@@ -95,7 +95,7 @@ module Lockdown
             return true if url =~ /^mailto:/
 
             # Public file
-            file = File.join(RAILS_ROOT, 'public', url)
+            file = File.join(RAILS_ROOT, 'public', url.gsub(/(\?\d+)/, ''))
             return true if File.exists?(file)
 
             # Passing in different domain
